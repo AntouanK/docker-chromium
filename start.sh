@@ -6,10 +6,10 @@ mkdir .config
 
 sleep 1;
 
-echo "\n[start script] Starting chromium headless at $@"
+echo "[start script] Starting chromium headless at $@"
 chromium \
   --headless \
-  --user-data-dir=/home/chromium \
+  --user-data-dir=/home/docker/chromium \
   --disable-gpu \
   --no-first-run \
   --no-sandbox \
@@ -17,5 +17,5 @@ chromium \
 
 sleep 1;
 
-echo "\n[start script] Redirect incoming 9223 to 9222";
+echo "[start script] Redirect incoming 9223 to 9222";
 socat TCP-LISTEN:9223,fork TCP:127.0.0.1:9222

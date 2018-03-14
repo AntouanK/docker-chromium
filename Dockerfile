@@ -9,8 +9,9 @@ RUN rm -rf /tmp/*
 RUN useradd -m chromium
 
 USER chromium
-WORKDIR /home/chromium
+WORKDIR /home/docker
 
-COPY start.sh /home/chromium/
+COPY start.sh /home/docker/start.sh
+COPY chromium /home/docker/chromium
 
-ENTRYPOINT ["sh", "/home/chromium/start.sh"]
+ENTRYPOINT ["sh", "/home/docker/start.sh"]
