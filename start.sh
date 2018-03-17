@@ -1,18 +1,14 @@
 #!/bin/bash
 
-chromium --version ;
-
-mkdir .config
+echo "[start script] Making virtual display";
+Xvfb :1 -screen 0 1366x768x24+32 &
 
 sleep 1;
 
+chromium --version ;
 echo "[start script] Starting chromium headless at $@"
 chromium \
-  --headless \
-  --user-data-dir=/home/docker/chromium \
-  --disable-gpu \
   --no-first-run \
-  --no-sandbox \
   --remote-debugging-port=9222 $@ &
 
 sleep 1;
